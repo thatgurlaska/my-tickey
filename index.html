@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My TICKEY</title>
+
+    <!-- PWA -->
+    <meta name="theme-color" content="#f4f1eb">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HOME PAGE -->
+
+    <div id="homePage" class="page">
+
+        <h1>My TICKEY</h1>
+        <p>My little display hub</p>
+
+        <button id="crochetButton">🧶 Crochet</button>
+        <button id="todoButton">✓ To-do</button>
+        <button>🎨 Pixel Art</button>
+
+    </div>
+
+
+    <!-- CROCHET PROJECT LIST -->
+
+    <div id="crochetPage" class="page hidden">
+
+        <button id="backButton" class="back-button">
+            ← Back
+        </button>
+
+        <h1>🧶 Crochet</h1>
+        <p>Your crochet projects</p>
+
+        <div id="projectList"></div>
+
+        <button id="newProjectButton" class="primary-button">
+            + New Project
+        </button>
+
+    </div>
+
+
+    <!-- NEW PROJECT PAGE -->
+
+    <div id="newProjectPage" class="page hidden">
+
+        <button id="cancelProjectButton" class="back-button">
+            ← Back
+        </button>
+
+        <h1>New Project</h1>
+        <p>Create a crochet project</p>
+
+        <div class="project-card">
+
+            <label for="projectName">Project name</label>
+
+            <input
+                id="projectName"
+                type="text"
+                placeholder="e.g. Starfish Pillow"
+            >
+
+            <label>Project type</label>
+
+            <div class="type-selector">
+
+                <button id="selectRows" class="type-button active">
+                    Rows
+                </button>
+
+                <button id="selectRounds" class="type-button">
+                    Rounds
+                </button>
+
+            </div>
+
+            <button id="createProjectButton" class="primary-button">
+                Create Project
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ACTIVE PROJECT PAGE -->
+
+    <div id="activeProjectPage" class="page hidden">
+
+        <button id="projectBackButton" class="back-button">
+            ← Projects
+        </button>
+
+        <h1 id="activeProjectName">Project</h1>
+        <p id="activeProjectType"></p>
+
+
+        <!-- COUNTER -->
+
+        <div class="project-card counter-card">
+
+            <p id="counterLabel" class="small-label">
+                Current row
+            </p>
+
+            <div class="row-counter">
+
+                <button id="minusButton">−</button>
+
+                <span id="counter">1</span>
+
+                <button id="plusButton">+</button>
+
+            </div>
+
+        </div>
+
+
+        <!-- CURRENT INSTRUCTION -->
+
+        <div class="project-card current-instruction-card">
+
+            <p class="small-label">
+                Current instruction
+            </p>
+
+            <div id="currentInstructionRange" class="instruction-range">
+                No instruction
+            </div>
+
+            <p id="currentInstructionText" class="current-instruction-text">
+                No instruction for this row.
+            </p>
+
+            <div id="repeatDots" class="repeat-dots"></div>
+
+        </div>
+
+
+        <!-- PATTERN -->
+
+        <div class="pattern-section">
+
+            <div class="section-header">
+
+                <h2>Pattern</h2>
+
+                <button id="addInstructionButton" class="small-button">
+                    + Add
+                </button>
+
+            </div>
+
+            <div id="patternList"></div>
+
+        </div>
+
+
+        <button id="editProjectButton">
+            Edit Project
+        </button>
+
+    </div>
+
+
+    <!-- ADD INSTRUCTIONS PAGE -->
+
+    <div id="instructionPage" class="page hidden">
+
+        <button id="cancelInstructionButton" class="back-button">
+            ← Back
+        </button>
+
+        <h1>Add Instructions</h1>
+        <p>Build your pattern step by step</p>
+
+        <div class="project-card">
+
+            <label>Instruction type</label>
+
+            <div class="type-selector">
+
+                <button id="singleInstructionButton" class="type-button active">
+                    Single
+                </button>
+
+                <button id="rangeInstructionButton" class="type-button">
+                    Range
+                </button>
+
+            </div>
+
+
+            <div id="singleNumberArea">
+
+                <label id="singleNumberLabel" for="singleNumber">
+                    Row
+                </label>
+
+                <input
+                    id="singleNumber"
+                    type="number"
+                    min="1"
+                    value="1"
+                >
+
+            </div>
+
+
+            <div id="rangeNumberArea" class="hidden">
+
+                <div class="range-inputs">
+
+                    <div>
+
+                        <label id="rangeStartLabel" for="rangeStart">
+                            Start row
+                        </label>
+
+                        <input
+                            id="rangeStart"
+                            type="number"
+                            min="1"
+                            value="1"
+                        >
+
+                    </div>
+
+                    <div>
+
+                        <label id="rangeEndLabel" for="rangeEnd">
+                            End row
+                        </label>
+
+                        <input
+                            id="rangeEnd"
+                            type="number"
+                            min="1"
+                            value="2"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <label for="instructionText">
+                Instruction
+            </label>
+
+            <textarea
+                id="instructionText"
+                placeholder="e.g. sc around"
+            ></textarea>
+
+
+            <button id="saveInstructionButton" class="primary-button">
+                Save & Next
+            </button>
+
+            <button id="doneInstructionButton" class="secondary-button">
+                Done
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- EDIT INSTRUCTION PAGE -->
+
+    <div id="editInstructionPage" class="page hidden">
+
+        <button id="cancelEditInstructionButton" class="back-button">
+            ← Back
+        </button>
+
+        <h1>Edit Instruction</h1>
+        <p>Change this part of your pattern</p>
+
+        <div class="project-card">
+
+            <label>Instruction type</label>
+
+            <div class="type-selector">
+
+                <button id="editSingleInstructionButton" class="type-button">
+                    Single
+                </button>
+
+                <button id="editRangeInstructionButton" class="type-button">
+                    Range
+                </button>
+
+            </div>
+
+
+            <div id="editSingleNumberArea">
+
+                <label id="editSingleNumberLabel" for="editSingleNumber">
+                    Row
+                </label>
+
+                <input
+                    id="editSingleNumber"
+                    type="number"
+                    min="1"
+                    value="1"
+                >
+
+            </div>
+
+
+            <div id="editRangeNumberArea" class="hidden">
+
+                <div class="range-inputs">
+
+                    <div>
+
+                        <label id="editRangeStartLabel" for="editRangeStart">
+                            Start row
+                        </label>
+
+                        <input
+                            id="editRangeStart"
+                            type="number"
+                            min="1"
+                            value="1"
+                        >
+
+                    </div>
+
+                    <div>
+
+                        <label id="editRangeEndLabel" for="editRangeEnd">
+                            End row
+                        </label>
+
+                        <input
+                            id="editRangeEnd"
+                            type="number"
+                            min="1"
+                            value="2"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <label for="editInstructionText">
+                Instruction
+            </label>
+
+            <textarea
+                id="editInstructionText"
+                placeholder="e.g. sc around"
+            ></textarea>
+
+
+            <button id="saveEditInstructionButton" class="primary-button">
+                Save Changes
+            </button>
+
+            <button id="deleteInstructionButton" class="danger-button">
+                Delete Instruction
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- EDIT PROJECT PAGE -->
+
+    <div id="editProjectPage" class="page hidden">
+
+        <button id="cancelEditButton" class="back-button">
+            ← Back
+        </button>
+
+        <h1>Edit Project</h1>
+        <p>Change your project settings</p>
+
+        <div class="project-card">
+
+            <label for="editProjectName">
+                Project name
+            </label>
+
+            <input
+                id="editProjectName"
+                type="text"
+            >
+
+
+            <label>Project type</label>
+
+            <div class="type-selector">
+
+                <button id="editRows" class="type-button">
+                    Rows
+                </button>
+
+                <button id="editRounds" class="type-button">
+                    Rounds
+                </button>
+
+            </div>
+
+
+            <button id="saveEditButton" class="primary-button">
+                Save Changes
+            </button>
+
+            <button id="deleteProjectButton" class="danger-button">
+                Delete Project
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- OVERWRITE DIALOG -->
+
+    <div id="overwriteOverlay" class="dialog-overlay hidden">
+
+        <div class="dialog-card">
+
+            <h2>Instruction already exists</h2>
+
+            <p>
+                Some of these rows or rounds already have instructions.
+                Do you want to overwrite them?
+            </p>
+
+            <div class="dialog-buttons">
+
+                <button id="cancelOverwriteButton">
+                    Cancel
+                </button>
+
+                <button id="confirmOverwriteButton" class="overwrite-button">
+                    Overwrite
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+
+    <!-- REGISTER SERVICE WORKER -->
+
+    <script>
+
+        if ("serviceWorker" in navigator) {
+
+            window.addEventListener("load", function () {
+
+                navigator.serviceWorker.register("./service-worker.js");
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>
