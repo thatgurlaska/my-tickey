@@ -1,4 +1,4 @@
-const CACHE_NAME = "my-tickey-v1";
+const CACHE_NAME = "my-tickey-v2";
 
 const FILES_TO_CACHE = [
     "./",
