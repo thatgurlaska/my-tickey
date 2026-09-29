@@ -1,0 +1,355 @@
+<!-- ==================================
+     TO-DO V2 — DAY VIEW
+     ================================== -->
+
+<div id="todoPage" class="page hidden">
+
+    <button id="todoBackButton" class="back-button">
+        ← Back
+    </button>
+
+    <div class="todo-day-nav">
+        <button
+            id="previousTodoDayButton"
+            class="small-button"
+            aria-label="Previous day"
+        >
+            ‹
+        </button>
+
+        <div class="todo-day-title">
+            <span
+                id="todoDayWeekday"
+                class="section-kicker"
+            >
+                TODAY
+            </span>
+
+            <h1 id="todoDayDate">
+                Sunday · 27 September
+            </h1>
+        </div>
+
+        <button
+            id="nextTodoDayButton"
+            class="small-button"
+            aria-label="Next day"
+        >
+            ›
+        </button>
+    </div>
+
+
+    <section class="todo-v2-section">
+
+        <div class="home-section-header">
+            <div>
+                <span class="section-kicker">
+                    DAY
+                </span>
+
+                <h2>Today</h2>
+            </div>
+        </div>
+
+        <div id="todoTodayList"></div>
+
+        <button
+            id="newTodoTaskButton"
+            class="primary-button"
+        >
+            + Add Task
+        </button>
+
+    </section>
+
+
+    <section class="todo-v2-section">
+
+        <div class="home-section-header">
+            <div>
+                <span class="section-kicker">
+                    NEXT
+                </span>
+
+                <h2>Tomorrow</h2>
+            </div>
+        </div>
+
+        <div id="todoTomorrowList"></div>
+
+    </section>
+
+
+    <section class="todo-v2-section">
+
+        <div class="home-section-header">
+            <div>
+                <h2>Lists</h2>
+            </div>
+        </div>
+
+        <div id="todoListOverview"></div>
+
+        <button
+            id="newTodoListButton"
+            class="secondary-button"
+        >
+            + New List
+        </button>
+
+    </section>
+
+</div>
+
+
+<!-- ==================================
+     NEW DAY TASK
+     ================================== -->
+
+<div id="newTodoTaskPage" class="page hidden">
+
+    <button
+        id="cancelTodoTaskButton"
+        class="back-button"
+    >
+        ← Back
+    </button>
+
+    <h1>New Task</h1>
+
+    <p>
+        Add something to your day
+    </p>
+
+    <div class="project-card">
+
+        <label for="todoTaskText">
+            Task
+        </label>
+
+        <textarea
+            id="todoTaskText"
+            placeholder="What needs to be done?"
+        ></textarea>
+
+        <button
+            id="createTodoTaskButton"
+            class="primary-button"
+        >
+            Add Task
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================
+     EDIT DAY TASK
+     ================================== -->
+
+<div id="editTodoTaskPage" class="page hidden">
+
+    <button
+        id="cancelEditTodoTaskButton"
+        class="back-button"
+    >
+        ← Back
+    </button>
+
+    <h1>Edit Task</h1>
+
+    <p>
+        Change the task or its day
+    </p>
+
+    <div class="project-card">
+
+        <label for="editTodoTaskText">
+            Task
+        </label>
+
+        <textarea
+            id="editTodoTaskText"
+        ></textarea>
+
+        <button
+            id="saveEditTodoTaskButton"
+            class="primary-button"
+        >
+            Save Changes
+        </button>
+
+        <button
+            id="deleteTodoTaskButton"
+            class="danger-button"
+        >
+            Delete Task
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================
+     NEW QUICK LIST
+     ================================== -->
+
+<div id="newTodoListPage" class="page hidden">
+
+    <button
+        id="cancelTodoListButton"
+        class="back-button"
+    >
+        ← Back
+    </button>
+
+    <h1>New List</h1>
+
+    <p>
+        Simple things to tick off
+    </p>
+
+    <div class="project-card">
+
+        <label for="todoListName">
+            List name
+        </label>
+
+        <input
+            id="todoListName"
+            type="text"
+            placeholder="e.g. Groceries"
+        >
+
+        <button
+            id="createTodoListButton"
+            class="primary-button"
+        >
+            Create List
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================
+     QUICK LIST
+     ================================== -->
+
+<div id="activeTodoListPage" class="page hidden">
+
+    <button
+        id="todoListBackButton"
+        class="back-button"
+    >
+        ← Lists
+    </button>
+
+    <div class="section-header">
+
+        <div>
+            <span class="section-kicker">
+                LIST
+            </span>
+
+            <h1 id="activeTodoListName">
+                Groceries
+            </h1>
+
+            <p id="activeTodoListSummary">
+                0 items
+            </p>
+        </div>
+
+        <button
+            id="editTodoListButton"
+            class="small-button hidden"
+            aria-hidden="true"
+            tabindex="-1"
+        >
+            Edit
+        </button>
+
+    </div>
+
+    <div id="todoTaskList"></div>
+
+    <div class="project-card">
+
+        <label for="quickListItemText">
+            New item
+        </label>
+
+        <div class="todo-quick-add-row">
+
+            <input
+                id="quickListItemText"
+                type="text"
+                placeholder="e.g. Cat food"
+            >
+
+            <button
+                id="addQuickListItemButton"
+                class="primary-button"
+            >
+                Add
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================
+     EDIT QUICK LIST
+     ================================== -->
+
+<div id="editTodoListPage" class="page hidden">
+
+    <button
+        id="cancelEditTodoListButton"
+        class="back-button"
+    >
+        ← Back
+    </button>
+
+    <h1>Edit List</h1>
+
+    <p>
+        Rename or remove this list
+    </p>
+
+    <div class="project-card">
+
+        <label for="editTodoListName">
+            List name
+        </label>
+
+        <input
+            id="editTodoListName"
+            type="text"
+        >
+
+        <button
+            id="saveEditTodoListButton"
+            class="primary-button"
+        >
+            Save Changes
+        </button>
+
+        <button
+            id="deleteTodoListButton"
+            class="danger-button"
+        >
+            Delete List
+        </button>
+
+    </div>
+
+</div>

@@ -1,0 +1,576 @@
+/* ==================================
+   MY TICKEY
+   CORE / BASE
+   ================================== */
+
+
+/* ==================================
+   THEME
+   ================================== */
+
+:root {
+    --bg: #151412;
+    --surface: #1d1b18;
+    --card: #24211d;
+    --card-hover: #2a2722;
+
+    --border: #3a342c;
+    --border-light: #4a4237;
+
+    --gold: #c8a45d;
+    --gold-hover: #d2b36c;
+    --gold-soft: rgba(200, 164, 93, 0.12);
+
+    --text: #ede7d9;
+    --text-secondary: #afa79a;
+    --text-muted: #78736a;
+
+    --danger: #d97872;
+    --danger-bg: rgba(217, 120, 114, 0.10);
+
+    --navi: #6fb8e8;
+    --navi-bright: #a9dcff;
+    --navi-soft: rgba(111, 184, 232, 0.10);
+    --navi-border: rgba(111, 184, 232, 0.28);
+
+    --radius-small: 10px;
+    --radius-medium: 14px;
+    --radius-large: 18px;
+}
+
+
+/* ==================================
+   BASE
+   ================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background: var(--bg);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(200, 164, 93, 0.035),
+            transparent 340px
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 34px 20px 60px;
+}
+
+
+/* ==================================
+   APP
+   ================================== */
+
+#app {
+    width: 100%;
+    max-width: 420px;
+}
+
+
+.page {
+    width: 100%;
+    max-width: 420px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ==================================
+   TYPOGRAPHY
+   ================================== */
+
+h1 {
+    margin-top: 8px;
+    margin-bottom: 6px;
+
+    color: var(--text);
+
+    font-size: 34px;
+    font-weight: 750;
+
+    letter-spacing: -1px;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+
+    color: var(--text);
+
+    font-size: 21px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 30px;
+
+    color: var(--text-secondary);
+
+    line-height: 1.5;
+}
+
+.small-label {
+    margin-bottom: 12px;
+
+    color: var(--gold);
+
+    font-family:
+        ui-monospace,
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.section-kicker {
+    color: var(--text-muted);
+
+    font-family:
+        ui-monospace,
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+}
+
+
+/* ==================================
+   GENERAL BUTTONS
+   ================================== */
+
+button {
+    width: 100%;
+
+    padding: 18px 19px;
+    margin-bottom: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+
+    background: var(--card);
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    box-shadow: none;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.15s ease;
+}
+
+button:hover {
+    background: var(--card-hover);
+    border-color: var(--border-light);
+
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+
+/* ==================================
+   BACK BUTTON
+   ================================== */
+
+.back-button {
+    width: auto;
+
+    padding: 9px 12px;
+    margin-bottom: 20px;
+
+    border-color: transparent;
+
+    background: transparent;
+    color: var(--text-secondary);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.back-button:hover {
+    background: var(--gold-soft);
+    border-color: transparent;
+    color: var(--gold);
+
+    transform: none;
+}
+
+
+/* ==================================
+   PRIMARY / SECONDARY
+   ================================== */
+
+.primary-button {
+    background: var(--gold);
+    border-color: var(--gold);
+
+    color: #171511;
+}
+
+.primary-button:hover {
+    background: var(--gold-hover);
+    border-color: var(--gold-hover);
+}
+
+.secondary-button {
+    background: transparent;
+    border-color: var(--border);
+
+    color: var(--text-secondary);
+}
+
+.secondary-button:hover {
+    background: var(--card);
+
+    color: var(--text);
+}
+
+
+/* ==================================
+   CARDS
+   ================================== */
+
+.project-card {
+    padding: 22px;
+    margin-bottom: 14px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+
+    box-shadow: none;
+}
+
+.project-list-card {
+    width: 100%;
+
+    padding: 18px 19px;
+
+    text-align: left;
+
+    background: var(--surface);
+}
+
+.project-list-card:hover {
+    background: var(--card);
+
+    border-color: var(--gold);
+}
+
+.project-list-card h2 {
+    margin-bottom: 5px;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.project-list-card p {
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-family:
+        ui-monospace,
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 12px;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* ==================================
+   FORMS
+   ================================== */
+
+label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+    font-weight: 650;
+}
+
+input,
+textarea {
+    width: 100%;
+
+    padding: 14px 15px;
+    margin-bottom: 24px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
+
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 16px;
+
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+textarea {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+
+    border-color: var(--gold);
+
+    background: #191816;
+}
+
+
+/* ==================================
+   SECTION HEADERS
+   ================================== */
+
+.section-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 12px;
+}
+
+.section-header h2 {
+    margin: 0;
+}
+
+.small-button {
+    width: auto;
+
+    padding: 9px 13px;
+    margin: 0;
+
+    background: var(--gold-soft);
+
+    border-color: var(--gold);
+
+    color: var(--gold);
+
+    font-size: 13px;
+}
+
+.small-button:hover {
+    background: var(--gold);
+
+    color: #171511;
+}
+
+
+/* ==================================
+   DANGER
+   ================================== */
+
+.danger-button {
+    margin-top: 10px;
+
+    background: var(--danger-bg);
+
+    border-color: rgba(217, 120, 114, 0.35);
+
+    color: var(--danger);
+}
+
+.danger-button:hover {
+    background: rgba(217, 120, 114, 0.16);
+
+    border-color: var(--danger);
+}
+
+
+/* ==================================
+   DIALOG
+   ================================== */
+
+.dialog-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(8, 7, 6, 0.78);
+
+    backdrop-filter: blur(4px);
+}
+
+.dialog-card {
+    width: 100%;
+    max-width: 360px;
+
+    padding: 23px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-large);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.dialog-card h2 {
+    margin-bottom: 10px;
+}
+
+.dialog-card p {
+    margin-bottom: 24px;
+
+    line-height: 1.5;
+}
+
+.dialog-buttons {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+.dialog-buttons button {
+    margin: 0;
+
+    padding: 14px;
+
+    font-size: 14px;
+}
+
+.overwrite-button {
+    background: var(--gold);
+
+    border-color: var(--gold);
+
+    color: #171511;
+}
+
+.overwrite-button:hover {
+    background: var(--gold-hover);
+
+    border-color: var(--gold-hover);
+}
+
+
+/* ==================================
+   SCROLLBAR
+   ================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-light);
+}
+
+
+/* ==================================
+   MOBILE — SHARED
+   ================================== */
+
+@media (max-width: 480px) {
+
+    body {
+        padding:
+            max(24px, env(safe-area-inset-top))
+            16px
+            max(40px, env(safe-area-inset-bottom));
+    }
+
+    h1 {
+        font-size: 31px;
+    }
+
+    .project-card {
+        padding: 19px;
+    }
+
+}

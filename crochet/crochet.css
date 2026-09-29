@@ -1,0 +1,282 @@
+/* ==================================
+   MY TICKEY
+   CROCHET
+   ================================== */
+
+
+/* ==================================
+   TYPE SELECTORS
+   ================================== */
+
+.type-selector {
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 24px;
+}
+
+.type-button {
+    padding: 11px 14px;
+    margin: 0;
+
+    background: transparent;
+    color: var(--text-secondary);
+
+    border: 1px solid var(--border);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.type-button.active {
+    background: var(--gold-soft);
+    border-color: var(--gold);
+
+    color: var(--gold);
+}
+
+.type-button.active:hover {
+    background: var(--gold-soft);
+}
+
+
+/* ==================================
+   COUNTER
+   ================================== */
+
+.counter-card {
+    margin-top: 20px;
+}
+
+.row-counter {
+    display: grid;
+
+    grid-template-columns: 64px 1fr 64px;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.row-counter span {
+    min-width: 60px;
+
+    text-align: center;
+
+    color: var(--text);
+
+    font-family:
+        ui-monospace,
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 46px;
+    font-weight: 700;
+
+    letter-spacing: -2px;
+}
+
+.row-counter button {
+    width: 64px;
+    height: 56px;
+
+    padding: 0;
+    margin: 0;
+
+    background: var(--card);
+
+    border-color: var(--border);
+
+    color: var(--gold);
+
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.row-counter button:hover {
+    background: var(--gold-soft);
+
+    border-color: var(--gold);
+}
+
+
+/* ==================================
+   CURRENT INSTRUCTION
+   ================================== */
+
+.current-instruction-card {
+    margin-top: 14px;
+
+    border-color: #493f30;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(200, 164, 93, 0.07),
+            transparent 55%
+        ),
+        var(--surface);
+}
+
+.instruction-range {
+    margin-bottom: 10px;
+
+    color: var(--text-secondary);
+
+    font-family:
+        ui-monospace,
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 12px;
+    font-weight: 650;
+
+    letter-spacing: 0.3px;
+}
+
+.current-instruction-text {
+    margin-bottom: 0;
+
+    color: var(--text);
+
+    font-size: 19px;
+    font-weight: 650;
+
+    line-height: 1.5;
+
+    white-space: pre-wrap;
+}
+
+
+/* ==================================
+   REPEAT DOTS
+   ================================== */
+
+.repeat-dots {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 19px;
+}
+
+.repeat-dot {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.repeat-dot.empty {
+    color: var(--border-light);
+}
+
+.repeat-dot.filled {
+    color: var(--gold);
+}
+
+
+/* ==================================
+   PATTERN
+   ================================== */
+
+.pattern-section {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.pattern-item {
+    padding: 17px;
+    margin-bottom: 9px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.pattern-item:hover {
+    background: var(--card);
+
+    border-color: var(--border-light);
+
+    transform: translateY(-1px);
+}
+
+.pattern-item.current {
+    background: var(--gold-soft);
+
+    border-color: var(--gold);
+
+    outline: none;
+}
+
+.pattern-number {
+    margin-bottom: 7px;
+
+    color: var(--gold);
+
+    font-family:
+        ui-monospace,
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.8px;
+}
+
+.pattern-text {
+    margin: 0;
+
+    color: var(--text);
+
+    line-height: 1.5;
+
+    white-space: pre-wrap;
+}
+
+
+/* ==================================
+   RANGE INPUTS
+   ================================== */
+
+.range-inputs {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+
+/* ==================================
+   MOBILE — CROCHET
+   ================================== */
+
+@media (max-width: 480px) {
+
+    .row-counter {
+        grid-template-columns: 58px 1fr 58px;
+    }
+
+    .row-counter button {
+        width: 58px;
+        height: 54px;
+    }
+
+}
