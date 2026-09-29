@@ -1,61 +1,134 @@
-const CACHE_NAME = "my-tickey-v2";
+const CACHE_NAME = "my-tickey-v4";
 
 const FILES_TO_CACHE = [
     "./",
     "./index.html",
-    "./style.css",
-    "./script.js",
-    "./manifest.json"
+    "./manifest.json",
+
+    // Core
+    "./core/base.css",
+    "./core/app.js",
+
+    // Home
+    "./home/home.html",
+    "./home/home.css",
+
+    // To-do
+    "./todo/todo.html",
+    "./todo/todo.css",
+    "./todo/todo.js",
+
+    // Crochet
+    "./crochet/crochet.html",
+    "./crochet/crochet.css",
+    "./crochet/crochet.js",
+
+    // App icons
+    "./icons/icon-192.png",
+    "./icons/icon-512.png"
 ];
 
 
-// Save the app files for offline use
-self.addEventListener("install", function (event) {
+// ============================================================
+// INSTALL
+// Save the current app files for offline use
+// ============================================================
 
-    event.waitUntil(
-        caches.open(CACHE_NAME).then(function (cache) {
+self.addEventListener(
+    "install",
+    function (event) {
 
-            return cache.addAll(FILES_TO_CACHE);
+        event.waitUntil(
 
-        })
-    );
+            caches
+                .open(CACHE_NAME)
+                .then(
+                    function (cache) {
 
-});
-
-
-// Remove old caches after an update
-self.addEventListener("activate", function (event) {
-
-    event.waitUntil(
-        caches.keys().then(function (cacheNames) {
-
-            return Promise.all(
-                cacheNames.map(function (cacheName) {
-
-                    if (cacheName !== CACHE_NAME) {
-
-                        return caches.delete(cacheName);
+                        return cache.addAll(
+                            FILES_TO_CACHE
+                        );
 
                     }
+                )
 
-                })
-            );
+        );
 
-        })
-    );
-
-});
+    }
+);
 
 
-// Load cached files when possible
-self.addEventListener("fetch", function (event) {
+// ============================================================
+// ACTIVATE
+// Remove old My TICKEY caches after an update
+// ============================================================
 
-    event.respondWith(
-        caches.match(event.request).then(function (cachedResponse) {
+self.addEventListener(
+    "activate",
+    function (event) {
 
-            return cachedResponse || fetch(event.request);
+        event.waitUntil(
 
-        })
-    );
+            caches
+                .keys()
+                .then(
+                    function (cacheNames) {
 
-});
+                        return Promise.all(
+
+                            cacheNames.map(
+                                function (cacheName) {
+
+                                    if (
+                                        cacheName !==
+                                        CACHE_NAME
+                                    ) {
+
+                                        return caches.delete(
+                                            cacheName
+                                        );
+
+                                    }
+
+                                }
+                            )
+
+                        );
+
+                    }
+                )
+
+        );
+
+    }
+);
+
+
+// ============================================================
+// FETCH
+// Use cached files when available
+// ============================================================
+
+self.addEventListener(
+    "fetch",
+    function (event) {
+
+        event.respondWith(
+
+            caches
+                .match(event.request)
+                .then(
+                    function (cachedResponse) {
+
+                        return (
+                            cachedResponse ||
+                            fetch(event.request)
+                        );
+
+                    }
+                )
+
+        );
+
+    }
+);
